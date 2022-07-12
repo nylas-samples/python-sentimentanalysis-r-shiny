@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nylas</title>
+</head>
+<body>
+	<div class="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
+	{% block content %}
+	<h2 class="font-bold">Thanks {{name}} - {{email}}</h2>
+	<h2 class="font-bold">Your rating was: {{rating}}</h2>
+	<h2 class="font-bold">Your comments were:<br><br> {{comments}}</h2>
+	<br><br>
+	<p class="font-semibold">You will be automatically redirected. 
+	If it doesn't work, follow the <a href="{{url_for('index')}}">link</a></p>
+	{% endblock %}
+	</div>
+</body>
+</html>
