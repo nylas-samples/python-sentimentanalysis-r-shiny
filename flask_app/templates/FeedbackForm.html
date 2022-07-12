@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nylas</title>
+</head>
+<body>
+	<div class="bg-green-300 border-green-600 border-b p-4 m-4 rounded">
+	{% block content %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				{{ message }}
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<h1 class="font-black">We hope you enjoyed VeggiEggs. Please take some time to leave a review</h1>
+	<br>
+	<form method="post">
+        <label for="name" class="font-bold">* Name</label>
+        <input type="text" name="name"
+               placeholder="Your name"
+               value="{{ request.form['name'] }}"></input>
+        <br><br>
+        <label for="email" class="font-bold">* Email</label>
+        <input type="email" name="email"
+               placeholder="Your email"></input>
+        <br><br>
+		<label for="rating" class="font-bold">Choose a rating:</label>
+		<select name="rating">
+			<option value="1">Poor</option>
+			<option value="2">Fair</option>
+			<option value="3">Ok</option>
+			<option value="4">Good</option>
+			<option value="5" selected>Great</option>
+		</select><br><br>
+        <p class="font-bold">* Comments</p>
+        <textarea name="comments"
+               placeholder="Your comments"
+               rows=5
+               cols=50></textarea>        
+        <br><br>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Submit</button>
+    </form>
+    <p class="font-bold">* Required</p>
+	{% endblock %}
+	</div>
+</body>
+</html>
